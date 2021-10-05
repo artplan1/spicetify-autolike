@@ -7,9 +7,7 @@
 /// <reference path="../globals.d.ts" />
 
 (function Autolike() {
-  const heart = document.querySelector(".control-button-heart");
-
-  if (!heart || !Spicetify.Player) {
+  if (!document.querySelector(".control-button-heart") || !Spicetify.Player) {
     setTimeout(Autolike, 100);
     return;
   }
@@ -17,6 +15,8 @@
   Spicetify.Player.addEventListener("onprogress", watchChange);
 
   function watchChange(v) {
+    const heart = document.querySelector(".control-button-heart");
+
     if (
       Spicetify.Player.isPlaying() &&
       Spicetify.Player.getProgressPercent() > 0.95 &&
